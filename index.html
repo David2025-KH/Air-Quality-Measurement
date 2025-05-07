@@ -42,7 +42,8 @@
 		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
 		<script type="text/javascript" src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
 	<script>
-		new DataTable('#airQuality', {
+		//new DataTable('#airQuality', {
+    var table = new DataTable('#airQuality', {
 			ajax: 'https://script.google.com/macros/s/AKfycbwwY0R-TpsrOFqrOozgwGR5sPwVKRCi4w1CChxiIaXDGi89BALu7Q-lqumkgIFQFl4u/exec',
 			columns: [
 				{ data: 'Data' },
@@ -71,6 +72,11 @@
 				{ data: 'VOCindex' },
 			]
 		});
+		// Add follow AI
+		 // Refresh data every 10 seconds
+    setInterval(function () {
+      table.ajax.reload(null, false); // false keeps current page and scroll
+    }, 5000); // 10000 milliseconds = 10 seconds	
 	</script>
 </body>
 </html>
