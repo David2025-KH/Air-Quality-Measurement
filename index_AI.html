@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ESP32 data</title>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css"/>
+  </head>
+  <body> 
+    <h1>Air Quality Measurment</h1>
+    <table id="airQuality" class="display" style="width:100%">
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Time</th>
+          <th>Sensor Read</th>
+          <th>Standard PM1 ug/m3</th>
+          <th>Standard PM2,5 ug/m3</th>
+          <th>Standard PM10 ug/m3</th>
+          <th>Environment PM1 ug/m3</th>
+          <th>Environment PM2,5 ug/m3</th>
+          <th>Environment PM10 ug/m3</th>
+          <th>Particles 0.3µm</th>
+          <th>Particles 0.5µm</th>
+          <th>Particles 1.0µm</th>
+          <th>Particles 2.5µm</th>
+          <th>Particles 5.0µm</th>
+          <th>Particles 10.0µm</th>
+		  <th>AIQ PM2.5</th>
+          <th>AIQ PM100</th>
+		  <th>Temperature (°C)</th>
+          <th>Humidity (%)</th>
+          <th>Pressure (kPa)</th>
+          <th>O2 (%)</th>
+          <th>CO2 (ppm)</th>
+          <th>TVOC</th>
+          <th>VOCindex</th>
+        </tr>
+      </thead>
+    </table>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
+    <script>
+      new DataTable('#airQuality', {
+        ajax: 'https://script.google.com/macros/s/AKfycbxyejfFgFNqBW_zMy7t_oWVVT-aSTcqUaC_GjXJ6BGuNnkf_C5wo9wtcFuz5QafhBya/exec',
+        columns: [
+          { data: 'Data' },
+          { data: 'Time' },
+          { data: 'Sensor Read' },
+          { data: 'data.pm10_standard' },
+          { data: 'data.pm25_standard' },
+          { data: 'data.pm100_standard' },
+          { data: 'data.pm10_env' },
+          { data: 'data.pm25_env' },
+          { data: 'data.pm100_env' },
+		  { data: 'data.particles_03um' },
+          { data: 'data.particles_05um' },
+          { data: 'data.particles_10um' },
+          { data: 'data.particles_25um' },
+          { data: 'data.particles_50um' },
+          { data: 'data.particles_100um' },
+		  { data: 'data.aqi_pm25_us' },
+          { data: 'data.aqi_pm100_us' }
+          { data: 'aht20_temp.temperature' },
+          { data: 'aht20_humidity.relative_humidity' },
+          { data: 'bme.readPressure()' },
+          { data: 'oxygenData' },
+          { data: 'co2Concentration' },
+          { data: 'sgp30.TVOC' },
+          { data: 'VOCindex' }
+        ]
+      });
+    </script>
+  </body>
+</html>
