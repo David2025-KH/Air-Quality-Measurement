@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	  <title>ESP32 data</title>
+	  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/2.2.2/css/dataTables.dataTables.css"/>
+	</head>
+	<body> 
+	  <h1>Air Quality Measurment</h1>
+		<table id="airQuality" class="display" style="width:100%">
+			<thead>
+				<tr>
+					<th>Data</th>
+					<th>Time</th>
+					<th>Sensor Read</th>
+					<th>Standard PM1 ug/m3</th>
+					<th>Standard PM2,5 ug/m3</th>
+					<th>Standard PM10 ug/m3</th>
+					<th>Environment PM1 ug/m3</th>
+					<th>Environment PM2,5 ug/m3</th>
+					<th>Environment PM10 ug/m3</th>
+					<th>Particles 0,3um</th>
+					<th>Particles 0,5um</th>
+					<th>Particles 10um</th>
+					<th>Particles 25um</th>
+					<th>Particles 50um</th>
+					<th>Particles 100um</th>
+					<th>AIQ PM2,5</th>
+					<th>AIQ PM100</th>
+					<th>Temperature C</th>
+					<th>Humidity %</th>
+					<th>Air Pressure KPa</th>
+					<th>O2 %</th>
+					<th>CO2 ppm</th>
+					<th>TVOC</th>
+					<th>VOCindex</th>
+					
+					<!-- Add more columns as needed based on your JSON structure-->
+				</tr>
+			</thead>
+		</table>
+		<script type="text/javascript" src="https://code.jquery.com/jquery-3.7.1.js"></script>
+		<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.2/moment.min.js"></script>
+		<script type="text/javascript" src="https://cdn.datatables.net/2.2.2/js/dataTables.js"></script>
+	<script>
+		new DataTable('#airQuality', {
+			ajax: 'https://script.google.com/macros/s/AKfycbwIedyV1Q_bIy73AmOO30vad2ux0j3Qd2ecE-Ri3JwCDt3SkT2qI1sIAJHbUAazgftK/exec',
+			columns: [
+				{ data: 'Data' },
+				{ data: 'Time' },
+				{ data: 'Sensor Read' },
+				{ data: 'Standard PM1 ug/m3' },
+				{ data: 'Standard PM2,5 ug/m3' },
+				{ data: 'Standard PM10 ug/m3' },
+				{ data: 'Environment PM1 ug/m3' },
+				{ data: 'Environment PM2,5 ug/m3' },
+				{ data: 'Environment PM10 ug/m3' },
+				{ data: 'Particles 0,3um' },
+				{ data: 'Particles 0,5um' },
+				{ data: 'Particles 10um' },
+				{ data: 'Particles 25um' },
+				{ data: 'Particles 50um' },
+				{ data: 'Particles 100um' },
+				{ data: 'AIQ PM2,5' },
+				{ data: 'AIQ PM100' },
+				{ data: 'Temperature C' },
+				{ data: 'Humidity %' },
+				{ data: 'Air Pressure KPa' },
+				{ data: 'O2 %' },
+				{ data: 'CO2 ppm' },
+				{ data: 'TVOC' },
+				{ data: 'VOCindex' },
+			]
+		});
+	</script>
+</body>
+</html>
